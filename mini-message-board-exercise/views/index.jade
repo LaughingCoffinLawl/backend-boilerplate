@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  each message in messages
+    h3= "Author: " + message.user
+    p= message.text 
+    p= message.added
+  
+  button(type="button", onclick='redirectTo("/new")') Redirect to /new
+
+  script.
+    function redirectTo(url) {
+      window.location.href = url;
+    }
