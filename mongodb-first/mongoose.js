@@ -1,16 +1,35 @@
-// Import the mongoose module
 const mongoose = require("mongoose");
+const wiki = require("./routes/index");
+const uri = require("./atla_uri");
 
-// Set `strictQuery: false` to globally opt into filtering by properties that aren't in the schema
-// Included because it removes preparatory warnings for Mongoose 7.
-// See: https://mongoosejs.com/docs/migrating_to_6.html#strictquery-is-removed-and-replaced-by-strict
 mongoose.set("strictQuery", false);
 
-// Define the database URL to connect to.
-const mongoDB = "mongodb://127.0.0.1/Express";
+const connectToDatabase = async () => {
+  try {
+    await mongoose.connect(uri);
+    console.log("Connected to MongoDB!");
+  } catch (err) {
+    console.error("MongoDB connection error:", err);
+  }
+};
 
-// Wait for database to connect, loggin an error if there is a problem
-main().catch((err) => console.log(err));
-async function main() {
-  await mongoose.connect(mongoDB);
-}
+mongoose.connection.on("connected", () => {
+  console.log("Connected to MongoDB!");
+});
+
+mongoose.connection.on("disconnected", () => {
+  console.log("Disconnected from MongoDB");
+});
+
+mongoose.connection.on("error", (err) => {
+  console.error("MongoDB connection error:", err);
+});
+
+process.on("SIGINT", () => {
+  mongoose.connection.close(() => {
+    console.log("MongoDB connection disconnected through app termination");
+    process.exit(0);
+  });
+});
+
+module.exports = connectToDatabase;
