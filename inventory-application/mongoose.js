@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
-const uri = require("./atla_uri");
+require("dotenv").config();
 
 mongoose.set("strictQuery", false);
 
 const connectToDatabase = async () => {
   try {
-    await mongoose.connect(uri);
+    await mongoose.connect(process.env.MONGODB_URL);
   } catch (err) {
     console.error("MongoDB connection error:", err);
   }
