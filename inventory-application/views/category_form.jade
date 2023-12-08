@@ -1,0 +1,34 @@
+extends layout 
+
+block content 
+    h1= title
+
+    form(id="myForm", method="POST", action="")
+        div.form-group 
+            input#item_id(type='hidden', name='item_id', required='true', value=(typeof category !== 'undefined' && category !== 'null' && category.id ? category.id : ''))
+            label(for='name') Category Name: 
+            input#name.form-control(type='text', placeholder='JRPG, Shooter, Tower Defense...', name='name', required='true', value=(typeof category !== 'undefined' && category !== 'null' && category.name ? category.name : ''))
+            br
+            label(for='description') Description: 
+            input#description.form-control(type='text', placeholder='Some description...', name='description', value=(typeof category !== 'undefined' && category !== 'null' && category.description ? category.description : ''))
+        button.btn.btn-primary(type='submit') Create
+
+    if typeof errors !== "undefined" && errors  
+        ul 
+            for error in errors  
+                li != error.msg
+    
+    script.
+        var confirmationPassword = !{JSON.stringify(process.env.CONFIRMATION_PASSWORD)};
+    script.
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            var itemId = document.getElementById('item_id').value;
+            if (itemId) {
+                const password = prompt("Please enter admin password to confirm the action");
+
+                if (password.trim() !== confirmationPassword.trim()) {
+                    event.preventDefault();
+                    alert('Incorrect password. Please try again.');
+                }
+            }
+        });

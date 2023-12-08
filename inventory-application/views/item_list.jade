@@ -1,0 +1,18 @@
+extends layout 
+
+block content
+
+    h1= title 
+    ul
+        each item in items 
+            li 
+                a(href=item.url) #{item.name} 
+                | #{item.description} -- 
+                if item.stock > 5
+                    span.text-success Available
+                else if item.stock <= 0
+                    span.text-danger Not Available
+                else
+                    span.text-readable-yellow Low in stock (Only #{item.stock} remaining)
+        else 
+            p There are no items.

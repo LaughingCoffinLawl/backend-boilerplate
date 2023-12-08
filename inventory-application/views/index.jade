@@ -2,4 +2,9 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  a(href="/inventory/categories") Categories:  
+  strong #{category_count}
+  br
+  br
+  a(href="/inventory/items") Items: 
+  strong #{item_count}

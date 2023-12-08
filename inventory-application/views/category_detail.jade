@@ -1,0 +1,18 @@
+extends layout 
+
+block content 
+    h1= category.name
+    p 
+    strong Items in this category:
+
+    ul
+        each item in category_item
+            li
+                a(href=item.url) #{item.name} 
+                strong -- 
+                | #{item.description}
+        else 
+            p No items in this category.
+
+    a.btn.btn-primary(style='margin-left: 20px;margin-right:20px', href=(href=category.url+'/update')) Update
+    a.btn.btn-primary(href=category.url+'/delete') Delete

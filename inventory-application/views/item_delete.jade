@@ -1,0 +1,21 @@
+extends layout 
+block content 
+    h1= title
+    p Do you really want to delete this item?
+
+    form(id="myForm", method='POST', action='')
+        .form-group 
+            input#item_id(type='hidden', name='item_id', required='true', value=items.id)
+        button.btn.btn-primary(type='submit') Delete
+
+    script.
+        var confirmationPassword = !{JSON.stringify(process.env.CONFIRMATION_PASSWORD)};
+    script.
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            const password = prompt("Please enter admin password to confirm the action");
+
+            if (password.trim() !== confirmationPassword.trim()) {
+                event.preventDefault();
+                alert('Incorrect password. Please try again.');
+            }
+        });

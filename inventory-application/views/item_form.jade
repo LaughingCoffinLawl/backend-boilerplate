@@ -1,0 +1,51 @@
+extends layout 
+
+block content 
+    h1= title
+
+    form(id="myForm", method='POST', action='', enctype="multipart/form-data")
+        div.form-group
+            input#item_id(type='hidden', name='item_id', required='true', value=(typeof items !== 'undefined' && items !== 'null' && items.id ? items.id : ''))
+            label(for='name') 
+            strong Name: 
+            input#name.form-control(type='text', placeholder='Name', name='name', required='true', value=(typeof items !== 'undefined' && items !== 'null' && items.name ? items.name : ''))
+            br
+            label(for='description') 
+            strong Description: 
+            textarea#description.form-control(type='text', placeholder='Description', name='description', required='true')= (typeof items !== 'undefined' && items !== 'null' && items.description ? items.description : '')
+            br
+            label(for='category') 
+            strong Category: 
+            div
+                each category in categories
+                    div(style='display: inline; padding-right:10px;')
+                        input.checkbox-input(type='checkbox', name='category', id=category._id, value=category._id, checked=(items && items.category && items.category.some(cat => cat._id.toString() === category._id.toString())) ? 'checked' : false) 
+                        label(for=category._id) #{category.name}
+            br
+            label(for='price') 
+            strong Price: 
+            input#price.form-control(type='text', placeholder='29.99, 39.99, 49.99... Omit the symbol', name='price', required='true', value=(typeof items !== 'undefined' && items !== 'null' && items.price ? items.price : ''))
+            br
+            label(for='stock') 
+            strong Stock: 
+            input#stock.form-control(type='text', placeholder='1, 2, 3, 10, 15... how many in stock', name='stock', required='true', value=(typeof items !== 'undefined' && items !== 'null' && items.stock ? items.stock : ''))
+            br
+            input(type='file', name='image')
+            button.btn.btn-primary(type='submit') Submit
+
+    if typeof errors !== "undefined" && errors
+
+    script.
+        var confirmationPassword = !{JSON.stringify(process.env.CONFIRMATION_PASSWORD)};
+    script.
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            var itemId = document.getElementById('item_id').value;
+            if (itemId) {
+                const password = prompt("Please enter admin password to confirm the action");
+
+                if (password.trim() !== confirmationPassword.trim()) {
+                    event.preventDefault();
+                    alert('Incorrect password. Please try again.');
+                }
+            }
+        });

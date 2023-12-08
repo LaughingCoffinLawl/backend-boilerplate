@@ -20,15 +20,14 @@ const mongoDB = userArgs[0];
 
 main().catch((err) => console.log(err));
 
-async function main() {
-  console.log("Debug: About to connect");
-  await mongoose.connect(mongoDB);
-  console.log("Debug: Should be connected?");
-  await createCategories();
-  await createItems();
-  console.log("Debug: Closing mongoose");
-  mongoose.connection.close();
-}
+// async function main() {
+console.log("Debug: About to connect");
+await mongoose.connect(mongoDB);
+console.log("Debug: Should be connected?");
+await createCategories();
+await createItems();
+console.log("Debug: Closing mongoose");
+mongoose.connection.close();
 
 // We pass the index to the ...Create functions so that, for example,
 // genre[0] will always be the Fantasy genre, regardless of the order

@@ -1,0 +1,30 @@
+extends layout 
+
+block content 
+    h1= item.name
+    img(src='/images/' + item.id, alt="image")
+    br
+    br
+    strong Category: 
+    each category, i in categories
+        a(href=category.url) #{category.name}
+        if i < categories.length - 1
+            span, 
+    else 
+        p No categories.
+    p 
+    strong Description:  
+    | #{item.description}
+
+    p
+    strong Price: 
+    | #{item.price}€
+    
+    p 
+    strong in Stock: 
+    | #{item.stock}
+    br
+    br
+    a.btn.btn-primary(style='margin-right:20px', href=(href=item.url+'/update')) Update
+    a.btn.btn-primary(href=item.url+'/delete') Delete
+  

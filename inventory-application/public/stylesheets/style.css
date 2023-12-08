@@ -1,8 +1,12 @@
+.text-readable-yellow {
+  color: #d4a017; /* This is a darker, more readable yellow color */
+}
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
 }
