@@ -1,0 +1,80 @@
+body {
+  padding: 20px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #0a244d;
+  color: white;
+}
+
+a {
+  color: #5b49ac;
+}
+
+.scrollable {
+  overflow-y: scroll;
+}
+
+.div-header {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+}
+
+.header a {
+  height: 40px;
+}
+
+.user-actions {
+  display: flex;
+  gap: 10px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.div-messages {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 300px;
+}
+
+.message-text {
+  justify-self: center;
+  align-self: center;
+  width: 100%;
+  border-bottom: 1px dashed;
+  margin-bottom: 20px;
+}
+
+.text-area {
+  background-color: #0a347b;
+  width: 80%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group input {
+  background-color: #0a347b;
+}
+
+.send {
+  margin-left: 10%;
+}

@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  div.div-header
+    div.header
+      h1= title
+      div.user-actions
+        if !isAuthenticated
+          a.btn.btn-primary(href="/login") Log In
+          br
+          a.btn.btn-primary(href="/signup") Sign Up
+        else
+          if user
+            p Welcome back, #{user.first_name}
+          a.btn.btn-primary(href="/logout") Log Out
+  br
+  div.div-messages
+    h3 Messages
+    div.messages.scrollable
+      for message in messages
+        if !isAuthenticated
+          h5
+            i= "Anonymous"
+        else
+          h5
+            i= message.author 
+        p
+          i= DateTime.fromJSDate(message.date).toFormat('dd LLL yyyy HH:mm')
+        p= message.message
+        div.message-text
+  br
+  form(method="POST", action="", scro)
+    div.form-group
+      if !isAuthenticated 
+        textarea.text-area(name="message", cols="160%", rows="3", disabled, placeholder="You must login in order to send a message...")
+      else 
+        p Shown name: #{user.first_name + " " + user.last_name}
+        textarea.text-area(name="message", cols="160%", rows="3", placeholder="Enter a text...", name="message")
+    button.btn.btn-primary.send(type="submit") Send message

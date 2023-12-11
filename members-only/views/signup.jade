@@ -1,0 +1,23 @@
+extends layout 
+block content 
+    div.header
+        h1= title
+        a.btn.btn-primary(href="/") Home
+
+    form(method="POST", action="")
+        div.form-group
+            label(for="first_name") First Name:
+            input#first_name.form-control(type="text", placeholder="Your first name...", name="first_name")
+            br
+            label(for="last_name") Last Name:
+            input#last_name.form-control(type="text", placeholder="Your last name...", name="last_name") 
+            br
+            label(for="username") Email:
+            input#username.form-control(type="text", placeholder="Your email...", name="username")
+            br
+            label(for="password") Password:
+            input#password.form-control(type="password", placeholder="Select a secure password...", name="password")
+            br
+            label(for="conpassword") Confirm password
+            input#conpassword.form-control(type="password", placeholder="Confirm your password...", name="conpassword")
+        button.btn.btn-primary(type="submit") Signup
