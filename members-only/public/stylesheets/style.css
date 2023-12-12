@@ -23,7 +23,7 @@ a {
 .header {
   display: flex;
   justify-content: space-between;
-  width: 85%;
+  width: 90%;
 }
 
 .header a {
@@ -77,4 +77,35 @@ a {
 
 .send {
   margin-left: 10%;
+}
+
+.VIP {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-vip {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  gap: 10px;
+}
+
+.form-vip button {
+  height: 35px;
+}
+
+.admin {
+  font-size: 10px;
+}
+
+.delete-button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }

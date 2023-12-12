@@ -104,3 +104,37 @@ exports.user_logout_post = (req, res) => {
     });
   });
 };
+
+exports.user_vip_get = asyncHandler(async (req, res, next) => {
+  res.render("vip", { title: "VIP" });
+});
+
+exports.user_vip_post = asyncHandler(async (req, res, next) => {
+  const myUser = await User.findById(req.user.id);
+  console.log(myUser);
+  const passcode = process.env.PASSCODE;
+  if (req.body.passcode === passcode) {
+    myUser.member_ship = "in";
+    await myUser.save();
+    res.redirect("/");
+  } else {
+    console.log("Nope");
+  }
+});
+
+exports.user_admin_get = asyncHandler(async (req, res, next) => {
+  res.render("admin", { title: "Admin Panel" });
+});
+
+exports.user_admin_post = asyncHandler(async (req, res, next) => {
+  const myUser = await User.findById(req.user.id);
+  console.log(myUser);
+  const adminpass = process.env.ADMIN_PASSCODE;
+  if (req.body.adminpass === adminpass) {
+    myUser.member_ship = "admin";
+    await myUser.save();
+    res.redirect("/");
+  } else {
+    console.log("Nope");
+  }
+});

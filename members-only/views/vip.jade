@@ -1,0 +1,9 @@
+extends layout 
+block content 
+    div.header
+        h1= "Be a VIP"
+        a.btn.btn-primary(href="/") Home
+    form.form-vip(method="POST", action="")
+        label(for="passcode") Enter the secret passcode: 
+        input(type="text", placeholder="ssh!", name="passcode")
+        button.btn.btn-primary(type="submit") VIP me
