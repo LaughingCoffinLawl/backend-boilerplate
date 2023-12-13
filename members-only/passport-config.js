@@ -1,7 +1,7 @@
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
-const User = require("./modules/user");
+const User = require("./models/user");
 const bcrypt = require("bcryptjs");
 
 module.exports = function (passport) {

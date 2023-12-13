@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
-const User = require("../modules/user");
+const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 

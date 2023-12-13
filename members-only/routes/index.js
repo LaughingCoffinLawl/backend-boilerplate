@@ -1,8 +1,8 @@
 var express = require("express");
 const asyncHandler = require("express-async-handler");
 var router = express.Router();
-const Message = require("../modules/messages");
-const User = require("../modules/user");
+const Message = require("../models/messages");
+const User = require("../models/user");
 const { body, validationResult } = require("express-validator");
 const { DateTime } = require("luxon");
 
