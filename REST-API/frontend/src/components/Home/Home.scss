@@ -39,3 +39,27 @@
   align-self: center;
   justify-self: center;
 }
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-area {
+  overflow: hidden;
+  resize: none;
+}
+
+svg {
+  align-self: center;
+  &:hover {
+    width: 60px;
+    cursor: pointer;
+  }
+}
+
+.createDialog {
+  position: relative;
+  bottom: 23rem;
+  left: 6.5rem;
+}
