@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom/client";
 import Home from "./components/Home/Home";
-import PostPage from "./components/Posts/GetPage";
-import EditPage from "./components/Posts/EditPage";
+import PostPage from "./components/Posts/GetPost";
+import EditPage from "./components/Posts/EditPost";
 import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 

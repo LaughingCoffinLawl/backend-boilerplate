@@ -4,9 +4,10 @@ const commentController = require("../controllers/commentController");
 
 /* Post Routes */
 
-module.exports = () => {
-  router.post("/", commentController.createComment);
-  router.get("/:id", commentController.getComment);
-  router.put("/:id", commentController.updateComment);
-  router.delete("/:id", commentController.deleteComment);
-};
+router.post("/", commentController.createComment);
+router.get("/:id", commentController.getComment);
+router.get("/post/:postId", commentController.getComments);
+router.put("/:id", commentController.updateComment);
+router.delete("/:id", commentController.deleteComment);
+
+module.exports = router;

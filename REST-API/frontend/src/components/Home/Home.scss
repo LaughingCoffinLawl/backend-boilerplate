@@ -50,7 +50,7 @@
   resize: none;
 }
 
-svg {
+.addPost {
   align-self: center;
   &:hover {
     width: 60px;
@@ -62,4 +62,12 @@ svg {
   position: relative;
   bottom: 23rem;
   left: 6.5rem;
+}
+
+#commentID {
+  width: 100%;
+}
+
+.comments {
+  border: 1px solid;
 }

@@ -5,15 +5,9 @@ import { Link } from "react-router-dom";
 import useDeletePost from "./DeletePost";
 
 function Post({ post }) {
-  const [isOverflowing, setIsOverflowing] = useState(false);
   const textRef = useRef();
   const deletePost = useDeletePost();
 
-  useEffect(() => {
-    if (textRef.current.scrollHeight > textRef.current.clientHeight) {
-      setIsOverflowing(true);
-    }
-  }, [post]);
   const date = DateTime.fromISO(post.createAt).toLocaleString(
     DateTime.DATETIME_MED
   );
@@ -23,11 +17,9 @@ function Post({ post }) {
       <h3>{post.title}</h3>
       <p>{post.author}</p>
       <p ref={textRef}>{post.text}</p>
-      {isOverflowing && (
-        <Link to={`/posts/${post._id}`} className="continue-reading">
-          Continue Reading...
-        </Link>
-      )}
+      <Link to={`/posts/${post._id}`} className="continue-reading">
+        Continue Reading...
+      </Link>
       <p>{date}</p>
       <div className="buttons">
         <a href={`/posts/edit/${post._id}`}>
